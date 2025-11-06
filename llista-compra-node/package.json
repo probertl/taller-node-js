@@ -1,0 +1,20 @@
+{
+ "name": "llista-compra",
+ "version": "1.0.0",
+ "description": "Aplicació bàsica de llista de la compra amb Node.js",
+ "main": "app.js",
+ "scripts": {
+  "start": "node app.js",
+  "dev": "node test.js"
+ },
+ "keywords": [
+  "nodejs",
+  "llista",
+  "compra"
+ ],
+ "author": "Mercawoman",
+ "license": "MIT",
+ "dependencies": {
+  "console-log-colors": "^0.5.0"
+ }
+}
