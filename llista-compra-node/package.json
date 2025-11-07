@@ -5,7 +5,7 @@
  "main": "app.js",
  "scripts": {
   "start": "node app.js",
-  "dev": "node test.js"
+  "dev": "nodemon --ext js,html,css app.js"
  },
  "keywords": [
   "nodejs",
@@ -15,6 +15,10 @@
  "author": "Mercawoman",
  "license": "MIT",
  "dependencies": {
-  "console-log-colors": "^0.5.0"
+  "console-log-colors": "^0.5.0",
+  "express": "^5.1.0"
+ },
+ "devDependencies": {
+  "nodemon": "^3.1.10"
  }
 }
