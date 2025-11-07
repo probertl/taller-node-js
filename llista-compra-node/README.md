@@ -50,5 +50,6 @@ app.post('/', (req, res) => {
  res.send('Got a POST request')
 })```
 
-![IMG](img-readme/postman.png)
+<img src="img-readme/postman.png" alt="IMG" width="400">
+
 
