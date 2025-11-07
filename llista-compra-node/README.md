@@ -50,6 +50,6 @@ app.post('/', (req, res) => {
  res.send('Got a POST request')
 })```
 
-<img src="img-readme/postman.png" alt="IMG" width="400">
+img en carpeta
 
 
