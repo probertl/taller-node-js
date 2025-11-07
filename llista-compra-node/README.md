@@ -45,7 +45,11 @@ Si s'utiliza l'extencio de postman important la manera de demanar les dades
 
 Per exemple amb aquesta ruta
 
-```js app.post('/', (req, res) => { res.send('Got a POST request') }) ``
+```js 
+app.post('/', (req, res) => { 
+    res.send('Got a POST request') 
+}) 
+```
 
 
 img en carpeta
