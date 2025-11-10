@@ -44,98 +44,98 @@ app.use('/api', apiRoutes);
 
 
 
-// // Rutes
-// app.get('/', async (req, res) => {
-//   try {
-//     // Obtenir tots els productes no comprats
-//     const productes = await Producte.find({ comprat: false })
-//       .sort({ dataCreacio: -1 });
+// Rutes
+app.get('/', async (req, res) => {
+  try {
+    // Obtenir tots els productes no comprats
+    const productes = await Producte.find({ comprat: false })
+      .sort({ dataCreacio: -1 });
     
-//     const missatge = req.query.missatge;
-//     const error = req.query.error;
+    const missatge = req.query.missatge;
+    const error = req.query.error;
     
-//     res.render('index', {
-//       productes,
-//       missatge,
-//       error,
-//       categories: ['fruites i verdures', 'carn i peix', 'làctics', 'begudes', 'asseo', 'altres']
-//     });
+    res.render('index', {
+      productes,
+      missatge,
+      error,
+      categories: ['fruites i verdures', 'carn i peix', 'làctics', 'begudes', 'asseo', 'altres']
+    });
     
-//   } catch (error) {
-//     console.error('Error obtenint productes:', error);
-//     res.redirect('/?error=Error carregant la llista');
-//   }
-// });
+  } catch (error) {
+    console.error('Error obtenint productes:', error);
+    res.redirect('/?error=Error carregant la llista');
+  }
+});
 
-// // Ruta per afegir producte (IMPLEMENTACIÓ SOL·LICITADA)
-// app.post('/afegir', async (req, res) => {
-//   try {
-//     const { nom, quantitat, unitat, categoria } = req.body;
+// Ruta per afegir producte (IMPLEMENTACIÓ SOL·LICITADA)
+app.post('/afegir', async (req, res) => {
+  try {
+    const { nom, quantitat, unitat, categoria } = req.body;
     
-//     // Crear nou producte amb les dades del formulari
-//     const nouProducte = new Producte({
-//       nom: nom.trim(),
-//       quantitat: parseInt(quantitat) || 1,
-//       unitat: unitat || 'unitats',
-//       categoria: categoria || 'altres'
-//     });
+    // Crear nou producte amb les dades del formulari
+    const nouProducte = new Producte({
+      nom: nom.trim(),
+      quantitat: parseInt(quantitat) || 1,
+      unitat: unitat || 'unitats',
+      categoria: categoria || 'altres'
+    });
     
-//     // Guardar a la base de dades
-//     await nouProducte.save();
+    // Guardar a la base de dades
+    await nouProducte.save();
     
-//     console.log(`✅ Producte afegit: ${nouProducte.nom}`);
-//     res.redirect('/?missatge=Producte afegit correctament');
+    console.log(`✅ Producte afegit: ${nouProducte.nom}`);
+    res.redirect('/?missatge=Producte afegit correctament');
     
-//   } catch (error) {
-//     console.error('❌ Error afegint producte:', error);
+  } catch (error) {
+    console.error('❌ Error afegint producte:', error);
     
-//     // Gestió d'errors de validació de Mongoose
-//     if (error.name === 'ValidationError') {
-//       const missatges = Object.values(error.errors).map(err => err.message);
-//       res.redirect(`/?error=${encodeURIComponent(missatges.join(', '))}`);
-//     } else {
-//       res.redirect('/?error=Error afegint el producte');
-//     }
-//   }
-// });
+    // Gestió d'errors de validació de Mongoose
+    if (error.name === 'ValidationError') {
+      const missatges = Object.values(error.errors).map(err => err.message);
+      res.redirect(`/?error=${encodeURIComponent(missatges.join(', '))}`);
+    } else {
+      res.redirect('/?error=Error afegint el producte');
+    }
+  }
+});
 
-// // Ruta API per afegir producte (JSON)
-// app.post('/api/productes', async (req, res) => {
-//   try {
-//     const { nom, quantitat, unitat, categoria } = req.body;
+// Ruta API per afegir producte (JSON)
+app.post('/api/productes', async (req, res) => {
+  try {
+    const { nom, quantitat, unitat, categoria } = req.body;
     
-//     const nouProducte = new Producte({
-//       nom: nom?.trim(),
-//       quantitat: parseInt(quantitat) || 1,
-//       unitat: unitat || 'unitats',
-//       categoria: categoria || 'altres'
-//     });
+    const nouProducte = new Producte({
+      nom: nom?.trim(),
+      quantitat: parseInt(quantitat) || 1,
+      unitat: unitat || 'unitats',
+      categoria: categoria || 'altres'
+    });
     
-//     await nouProducte.save();
+    await nouProducte.save();
     
-//     res.json({
-//       success: true,
-//       message: 'Producte afegit correctament',
-//       producte: nouProducte
-//     });
+    res.json({
+      success: true,
+      message: 'Producte afegit correctament',
+      producte: nouProducte
+    });
     
-//   } catch (error) {
-//     console.error('Error API afegint producte:', error);
+  } catch (error) {
+    console.error('Error API afegint producte:', error);
     
-//     if (error.name === 'ValidationError') {
-//       const missatges = Object.values(error.errors).map(err => err.message);
-//       res.status(400).json({
-//         success: false,
-//         message: missatges.join(', ')
-//       });
-//     } else {
-//       res.status(500).json({
-//         success: false,
-//         message: 'Error intern del servidor'
-//       });
-//     }
-//   }
-// });
+    if (error.name === 'ValidationError') {
+      const missatges = Object.values(error.errors).map(err => err.message);
+      res.status(400).json({
+        success: false,
+        message: missatges.join(', ')
+      });
+    } else {
+      res.status(500).json({
+        success: false,
+        message: 'Error intern del servidor'
+      });
+    }
+  }
+});
 
 // Iniciar servidor
 async function startServer() {
