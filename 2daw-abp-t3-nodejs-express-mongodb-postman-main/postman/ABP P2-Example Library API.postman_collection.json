@@ -1,0 +1,931 @@
+{
+	"info": {
+		"_postman_id": "d41497b5-67e6-43d4-9883-53a8d83b5151",
+		"name": "ABP P2-Example Library API",
+		"description": "Col·lecció CRUD de llibres i perfils públics d'usuaris amb likes.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19399681"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Get All Books",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () { ",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									"pm.test('Response is JSON', function () { ",
+									"    pm.response.to.be.withBody; pm.response.to.be.json; ",
+									"});",
+									"pm.test('Each book has expected fields and valid author', function () {",
+									"  const data = pm.response.json();",
+									"  if (Array.isArray(data)) {",
+									"    data.forEach(b => {",
+									"      pm.expect(b).to.have.property('title');",
+									"      pm.expect(b).to.have.property('year');",
+									"      pm.expect(b).to.have.property('genre');",
+									"      pm.expect(b).to.have.property('author');",
+									"      const a = b.author;",
+									"      pm.expect(a).to.be.an('object');",
+									"      pm.expect(a).to.have.property('name').that.is.a('string');",
+									"      pm.expect(a).to.have.property('birth_year').that.is.a('number');",
+									"      pm.expect(a).to.have.property('nationality').that.is.a('string');",
+									"    });",
+									"  }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL_ENDPOINT}}/books",
+							"host": [
+								"{{URL_ENDPOINT}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Books",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL_ENDPOINT}}/books",
+									"host": [
+										"{{URL_ENDPOINT}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1174"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"496-KTo0b3z9vHc7tenKpeA4UiNr/U8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Nov 2025 17:43:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"6903bab0c0ee6d9de6b22916\",\n        \"title\": \"El Principito\",\n        \"year\": 1943,\n        \"genre\": \"Fábula\",\n        \"author\": {\n            \"name\": \"Antoine de Saint-Exupéry\",\n            \"birth_year\": 1900,\n            \"nationality\": \"Francesa\"\n        }\n    },\n    {\n        \"_id\": \"6903bab0c0ee6d9de6b22914\",\n        \"title\": \"Cien años de soledad\",\n        \"year\": 1967,\n        \"genre\": \"Realismo mágico\",\n        \"author\": {\n            \"name\": \"Gabriel García Márquez\",\n            \"birth_year\": 1927,\n            \"nationality\": \"Colombiana\"\n        }\n    },\n    {\n        \"_id\": \"6903bab0c0ee6d9de6b22917\",\n        \"title\": \"La sombra del viento\",\n        \"year\": 2001,\n        \"genre\": \"Misterio\",\n        \"author\": {\n            \"name\": \"Carlos Ruiz Zafón\",\n            \"birth_year\": 1964,\n            \"nationality\": \"Española\"\n        }\n    },\n    {\n        \"_id\": \"6903bab0c0ee6d9de6b22915\",\n        \"title\": \"1984\",\n        \"year\": 1949,\n        \"genre\": \"Distopía\",\n        \"author\": {\n            \"name\": \"George Orwell\",\n            \"birth_year\": 1903,\n            \"nationality\": \"Británica\"\n        }\n    },\n    {\n        \"_id\": \"6903bab0c0ee6d9de6b22918\",\n        \"title\": \"Don Quijote de la Mancha\",\n        \"year\": 1605,\n        \"genre\": \"Novela clásica\",\n        \"author\": {\n            \"name\": \"Miguel de Cervantes\",\n            \"birth_year\": 1547,\n            \"nationality\": \"Española\"\n        }\n    },\n    {\n        \"_id\": \"6903bb39f7c939c7f33c7ef8\",\n        \"title\": \"The Hobbit: Revised Edition\",\n        \"year\": 1951,\n        \"genre\": \"Fantasy\",\n        \"author\": {\n            \"name\": \"J.R.R. Tolkien\",\n            \"birth_year\": 1892,\n            \"nationality\": \"British\"\n        },\n        \"createdAt\": \"2025-10-30T19:23:37.585Z\",\n        \"updatedAt\": \"2025-10-30T19:25:26.262Z\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create Book",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 201 or 200', function () { ",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]); ",
+									"});",
+									"pm.test('Response is JSON', function () { ",
+									"    pm.response.to.be.json; ",
+									"});",
+									"const jsonData = pm.response.json();",
+									"pm.test('Book contains expected fields and valid author', function () {",
+									"  pm.expect(jsonData).to.have.property('title');",
+									"  pm.expect(jsonData).to.have.property('year');",
+									"  pm.expect(jsonData).to.have.property('genre');",
+									"  pm.expect(jsonData).to.have.property('author');",
+									"  const author = jsonData.author;",
+									"  pm.expect(author).to.be.an('object');",
+									"  pm.expect(author).to.have.property('name').that.is.a('string');",
+									"  pm.expect(author).to.have.property('birth_year').that.is.a('number');",
+									"  pm.expect(author).to.have.property('nationality').that.is.a('string');",
+									"});",
+									"",
+									"if (jsonData && jsonData._id) { ",
+									"    pm.collectionVariables.set('book_id', jsonData._id); ",
+									"    console.log('book_id desat:', jsonData._id); ",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"The Hobbit\",\n  \"year\": 1937,\n  \"genre\": \"Fantasy\",\n  \"author\": {\n    \"name\": \"J.R.R. Tolkien\",\n    \"birth_year\": 1892,\n    \"nationality\": \"British\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{URL_ENDPOINT}}/books",
+							"host": [
+								"{{URL_ENDPOINT}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"The Hobbit\",\n  \"year\": 1937,\n  \"genre\": \"Fantasy\",\n  \"author\": {\n    \"name\": \"J.R.R. Tolkien\",\n    \"birth_year\": 1892,\n    \"nationality\": \"British\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{URL_ENDPOINT}}/books",
+									"host": [
+										"{{URL_ENDPOINT}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "248"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f8-tIkcWQLWjQURmSVKr00ufmYnFFM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Oct 2025 19:00:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"title\": \"The Hobbit\",\n    \"year\": 1937,\n    \"genre\": \"Fantasy\",\n    \"author\": {\n        \"name\": \"J.R.R. Tolkien\",\n        \"birth_year\": 1892,\n        \"nationality\": \"British\"\n    },\n    \"_id\": \"6903b5d2cb05a3ea5d2472c4\",\n    \"createdAt\": \"2025-10-30T19:00:34.858Z\",\n    \"updatedAt\": \"2025-10-30T19:00:34.858Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Book by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () { ",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									"pm.test('Response is JSON', function () { ",
+									"    pm.response.to.be.json; ",
+									"});",
+									"const jsonData = pm.response.json();",
+									"pm.test('Book contains expected fields and valid author', function () {",
+									"  pm.expect(jsonData).to.have.property('title');",
+									"  pm.expect(jsonData).to.have.property('year');",
+									"  pm.expect(jsonData).to.have.property('genre');",
+									"  pm.expect(jsonData).to.have.property('author');",
+									"  const author = jsonData.author;",
+									"  pm.expect(author).to.be.an('object');",
+									"  pm.expect(author).to.have.property('name').that.is.a('string');",
+									"  pm.expect(author).to.have.property('birth_year').that.is.a('number');",
+									"  pm.expect(author).to.have.property('nationality').that.is.a('string');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL_ENDPOINT}}/books/{{book_id}}",
+							"host": [
+								"{{URL_ENDPOINT}}"
+							],
+							"path": [
+								"books",
+								"{{book_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Book by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_ENDPOINT}}/books/{{book_id}}",
+									"host": [
+										"{{URL_ENDPOINT}}"
+									],
+									"path": [
+										"books",
+										"{{book_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "248"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f8-Bmj4QWqdHd4bY2Yv8ruz9RIrW3A\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Oct 2025 19:25:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6903bb39f7c939c7f33c7ef8\",\n    \"title\": \"The Hobbit\",\n    \"year\": 1937,\n    \"genre\": \"Fantasy\",\n    \"author\": {\n        \"name\": \"J.R.R. Tolkien\",\n        \"birth_year\": 1892,\n        \"nationality\": \"British\"\n    },\n    \"createdAt\": \"2025-10-30T19:23:37.585Z\",\n    \"updatedAt\": \"2025-10-30T19:23:37.585Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Book by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () { ",
+									"    pm.response.to.have.status(200); ",
+									"});",
+									"pm.test('Response is JSON', function () { ",
+									"    pm.response.to.be.json; ",
+									"});",
+									"const jsonData = pm.response.json();",
+									"pm.test('Updated book has expected fields and valid author', function () {",
+									"  pm.expect(jsonData).to.have.property('title');",
+									"  pm.expect(jsonData).to.have.property('year');",
+									"  pm.expect(jsonData).to.have.property('genre');",
+									"  pm.expect(jsonData).to.have.property('author');",
+									"  const author = jsonData.author;",
+									"  pm.expect(author).to.be.an('object');",
+									"  pm.expect(author).to.have.property('name').that.is.a('string');",
+									"  pm.expect(author).to.have.property('birth_year').that.is.a('number');",
+									"  pm.expect(author).to.have.property('nationality').that.is.a('string');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"The Hobbit: Revised Edition\",\n  \"year\": 1951,\n  \"genre\": \"Fantasy\",\n  \"author\": {\n    \"name\": \"J.R.R. Tolkien\",\n    \"birth_year\": 1892,\n    \"nationality\": \"British\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{URL_ENDPOINT}}/books/{{book_id}}",
+							"host": [
+								"{{URL_ENDPOINT}}"
+							],
+							"path": [
+								"books",
+								"{{book_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Book by ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"The Hobbit: Revised Edition\",\n  \"year\": 1951,\n  \"genre\": \"Fantasy\",\n  \"author\": {\n    \"name\": \"J.R.R. Tolkien\",\n    \"birth_year\": 1892,\n    \"nationality\": \"British\"\n  }\n}"
+								},
+								"url": {
+									"raw": "{{URL_ENDPOINT}}/books/{{book_id}}",
+									"host": [
+										"{{URL_ENDPOINT}}"
+									],
+									"path": [
+										"books",
+										"{{book_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "265"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"109-bvxrXws+YTYbsHamODbp60lg92w\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Oct 2025 19:25:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6903bb39f7c939c7f33c7ef8\",\n    \"title\": \"The Hobbit: Revised Edition\",\n    \"year\": 1951,\n    \"genre\": \"Fantasy\",\n    \"author\": {\n        \"name\": \"J.R.R. Tolkien\",\n        \"birth_year\": 1892,\n        \"nationality\": \"British\"\n    },\n    \"createdAt\": \"2025-10-30T19:23:37.585Z\",\n    \"updatedAt\": \"2025-10-30T19:25:26.262Z\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Book by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200 or 204', function () { ",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]); ",
+									"});",
+									"pm.test('Response is JSON or empty', function () { ",
+									"    try { ",
+									"        pm.response.to.be.json; ",
+									"    } catch (e) { ",
+									"        pm.expect(pm.response.text()).to.be.empty;",
+									"    }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL_ENDPOINT}}/books/{{book_id}}",
+							"host": [
+								"{{URL_ENDPOINT}}"
+							],
+							"path": [
+								"books",
+								"{{book_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Book by ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL_ENDPOINT}}/books/{{book_id}}",
+									"host": [
+										"{{URL_ENDPOINT}}"
+									],
+									"path": [
+										"books",
+										"{{book_id}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Oct 2025 19:01:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+									"pm.test('Response is JSON', function () { pm.response.to.be.withBody; pm.response.to.be.json; });",
+									"const data = pm.response.json();",
+									"pm.test('Each user has name, email, and likes array', function () {",
+									"  if (Array.isArray(data)) {",
+									"    data.forEach(u => {",
+									"      pm.expect(u).to.have.property('name');",
+									"      pm.expect(u).to.have.property('email');",
+									"      pm.expect(u).to.have.property('likes');",
+									"      pm.expect(u.likes).to.be.an('array');",
+									"      u.likes.forEach(l => {",
+									"        pm.expect(l).to.have.property('title');",
+									"        pm.expect(l).to.have.property('year');",
+									"        pm.expect(l).to.have.property('genre');",
+									"        pm.expect(l).to.have.property('author');",
+									"        const a = l.author;",
+									"        pm.expect(a).to.be.an('object');",
+									"        pm.expect(a).to.have.property('name').that.is.a('string');",
+									"        pm.expect(a).to.have.property('birth_year').that.is.a('number');",
+									"        pm.expect(a).to.have.property('nationality').that.is.a('string');",
+									"      });",
+									"    });",
+									"  }",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL_ENDPOINT}}/users",
+							"host": [
+								"{{URL_ENDPOINT}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_ENDPOINT}}/users",
+									"host": [
+										"{{URL_ENDPOINT}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "883"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"373-L1zXrV1Ujj9KpzEm83U9Cwawk6Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Oct 2025 19:24:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"6903bb12c0ee6d9de6b22920\",\n        \"name\": \"Anna Torres\",\n        \"email\": \"anna.torres@example.com\",\n        \"likes\": [\n            {\n                \"title\": \"El Principito\",\n                \"year\": 1943,\n                \"genre\": \"Fábula\",\n                \"author\": {\n                    \"name\": \"Antoine de Saint-Exupéry\",\n                    \"birth_year\": 1900,\n                    \"nationality\": \"Francesa\"\n                }\n            },\n            {\n                \"title\": \"1984\",\n                \"year\": 1949,\n                \"genre\": \"Distopía\",\n                \"author\": {\n                    \"name\": \"George Orwell\",\n                    \"birth_year\": 1903,\n                    \"nationality\": \"Británica\"\n                }\n            }\n        ]\n    },\n    {\n        \"_id\": \"6903bb12c0ee6d9de6b22921\",\n        \"name\": \"Marc Pujol\",\n        \"email\": \"marc.pujol@example.com\",\n        \"likes\": [\n            {\n                \"title\": \"Cien años de soledad\",\n                \"year\": 1967,\n                \"genre\": \"Realismo mágico\",\n                \"author\": {\n                    \"name\": \"Gabriel García Márquez\",\n                    \"birth_year\": 1927,\n                    \"nationality\": \"Colombiana\"\n                }\n            }\n        ]\n    },\n    {\n        \"_id\": \"6903bb12c0ee6d9de6b22922\",\n        \"name\": \"Laura Gómez\",\n        \"email\": \"laura.gomez@example.com\",\n        \"likes\": [\n            {\n                \"title\": \"La sombra del viento\",\n                \"year\": 2001,\n                \"genre\": \"Misterio\",\n                \"author\": {\n                    \"name\": \"Carlos Ruiz Zafón\",\n                    \"birth_year\": 1964,\n                    \"nationality\": \"Española\"\n                }\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get User by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+									"pm.test('Response is JSON', function () { pm.response.to.be.json; });",
+									"const jsonData = pm.response.json();",
+									"pm.test('User has expected fields and valid likes', function () {",
+									"  pm.expect(jsonData).to.have.property('name');",
+									"  pm.expect(jsonData).to.have.property('email');",
+									"  pm.expect(jsonData).to.have.property('likes');",
+									"  pm.expect(jsonData.likes).to.be.an('array');",
+									"  jsonData.likes.forEach(l => {",
+									"    pm.expect(l).to.have.property('title');",
+									"    pm.expect(l).to.have.property('year');",
+									"    pm.expect(l).to.have.property('genre');",
+									"    pm.expect(l).to.have.property('author');",
+									"    const a = l.author;",
+									"    pm.expect(a).to.be.an('object');",
+									"    pm.expect(a).to.have.property('name').that.is.a('string');",
+									"    pm.expect(a).to.have.property('birth_year').that.is.a('number');",
+									"    pm.expect(a).to.have.property('nationality').that.is.a('string');",
+									"  });",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL_ENDPOINT}}/users/{{user_id}}",
+							"host": [
+								"{{URL_ENDPOINT}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get User by ID ERROR",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_ENDPOINT}}/users/{{user_id}}",
+									"host": [
+										"{{URL_ENDPOINT}}"
+									],
+									"path": [
+										"users",
+										"{{user_id}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-jPiMkQpsecjc0J6NRXSmGVGaAw8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Oct 2025 19:01:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Validation failed\",\n    \"details\": [\n        {\n            \"message\": \"Invalid user ID format\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get User by ID OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_ENDPOINT}}/users/{{user_id}}",
+									"host": [
+										"{{URL_ENDPOINT}}"
+									],
+									"path": [
+										"users",
+										"{{user_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "372"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"174-O00GDGcquAgl5MeFrjcLUxChQQU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Oct 2025 19:26:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6903bb12c0ee6d9de6b22920\",\n    \"name\": \"Anna Torres\",\n    \"email\": \"anna.torres@example.com\",\n    \"likes\": [\n        {\n            \"title\": \"El Principito\",\n            \"year\": 1943,\n            \"genre\": \"Fábula\",\n            \"author\": {\n                \"name\": \"Antoine de Saint-Exupéry\",\n                \"birth_year\": 1900,\n                \"nationality\": \"Francesa\"\n            }\n        },\n        {\n            \"title\": \"1984\",\n            \"year\": 1949,\n            \"genre\": \"Distopía\",\n            \"author\": {\n                \"name\": \"George Orwell\",\n                \"birth_year\": 1903,\n                \"nationality\": \"Británica\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "book_id",
+			"value": ""
+		},
+		{
+			"key": "user_id",
+			"value": ""
+		}
+	]
+}

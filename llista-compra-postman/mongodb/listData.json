@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Whole milk",
+    "quantity": 2,
+    "unit": "l",
+    "category": "dairy",
+    "purchased": true
+  },
+  {
+    "name": "Sliced bread",
+    "quantity": 1,
+    "unit": "pack",
+    "category": "others",
+    "purchased": false
+  },
+  {
+    "name": "Eggs",
+    "quantity": 12,
+    "unit": "units",
+    "category": "others",
+    "purchased": true
+  },
+  {
+    "name": "Bananas",
+    "quantity": 6,
+    "unit": "units",
+    "category": "fruits and vegetables",
+    "purchased": false
+  },
+  {
+    "name": "Natural yogurt",
+    "quantity": 4,
+    "unit": "units",
+    "category": "dairy",
+    "purchased": true
+  },
+  {
+    "name": "Emmental cheese",
+    "quantity": 1,
+    "unit": "units",
+    "category": "dairy",
+    "purchased": false
+  },
+  {
+    "name": "Bomba rice",
+    "quantity": 1,
+    "unit": "kg",
+    "category": "others",
+    "purchased": true
+  },
+  {
+    "name": "Tomatoes",
+    "quantity": 8,
+    "unit": "units",
+    "category": "fruits and vegetables",
+    "purchased": false
+  },
+  {
+    "name": "Cucumbers",
+    "quantity": 2,
+    "unit": "units",
+    "category": "fruits and vegetables",
+    "purchased": true
+  },
+  {
+    "name": "Lettuce",
+    "quantity": 1,
+    "unit": "units",
+    "category": "fruits and vegetables",
+    "purchased": false
+  },
+  {
+    "name": "Chicken breast",
+    "quantity": 4,
+    "unit": "units",
+    "category": "meat and fish",
+    "purchased": true
+  },
+  {
+    "name": "Hake",
+    "quantity": 2,
+    "unit": "units",
+    "category": "meat and fish",
+    "purchased": false
+  },
+  {
+    "name": "Beef burgers",
+    "quantity": 6,
+    "unit": "units",
+    "category": "meat and fish",
+    "purchased": true
+  },
+  {
+    "name": "Bacon",
+    "quantity": 1,
+    "unit": "pack",
+    "category": "meat and fish",
+    "purchased": false
+  },
+  {
+    "name": "Extra virgin olive oil",
+    "quantity": 1,
+    "unit": "l",
+    "category": "others",
+    "purchased": true
+  },
+  {
+    "name": "Wine vinegar",
+    "quantity": 1,
+    "unit": "ml",
+    "category": "others",
+    "purchased": false
+  },
+  {
+    "name": "Sea salt",
+    "quantity": 1,
+    "unit": "kg",
+    "category": "others",
+    "purchased": true
+  },
+  {
+    "name": "Black pepper",
+    "quantity": 1,
+    "unit": "g",
+    "category": "others",
+    "purchased": false
+  },
+  {
+    "name": "Orange juice",
+    "quantity": 1,
+    "unit": "l",
+    "category": "drinks",
+    "purchased": true
+  },
+  {
+    "name": "Ground coffee",
+    "quantity": 1,
+    "unit": "kg",
+    "category": "others",
+    "purchased": false
+  }
+]

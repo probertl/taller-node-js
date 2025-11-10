@@ -1,0 +1,70 @@
+# ===============================
+# Node.js / Express Project
+# ===============================
+
+# Node dependencies
+node_modules/
+
+# Build and cache directories
+dist/
+build/
+.cache/
+.tmp/
+.nyc_output/
+coverage/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor directories
+.vscode/
+.idea/
+*.swp
+
+# Test output
+jest-html-reporters-*.html
+test-results/
+coverage/
+
+# PM2 / nodemon / runtime files
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# MongoDB dump or data files
+dump/
+data/
+
+# Temporary uploads or generated files
+uploads/
+tmp/
+temp/
+
+# Postman or Insomnia temporary files
+*.postman_environment.json
+*.postman_collection.json
+
+# Local configuration and secrets
+config/local.js
+config/secrets.js
+
+# Optional lock files (keep one if you prefer)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

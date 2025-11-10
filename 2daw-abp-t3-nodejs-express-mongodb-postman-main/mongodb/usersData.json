@@ -1,0 +1,60 @@
+[
+  {
+    "name": "Anna Torres",
+    "email": "anna.torres@example.com",
+    "likes": [
+      {
+        "title": "El Principito",
+        "year": 1943,
+        "genre": "Fábula",
+        "author": {
+          "name": "Antoine de Saint-Exupéry",
+          "birth_year": 1900,
+          "nationality": "Francesa"
+        }
+      },
+      {
+        "title": "1984",
+        "year": 1949,
+        "genre": "Distopía",
+        "author": {
+          "name": "George Orwell",
+          "birth_year": 1903,
+          "nationality": "Británica"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Marc Pujol",
+    "email": "marc.pujol@example.com",
+    "likes": [
+      {
+        "title": "Cien años de soledad",
+        "year": 1967,
+        "genre": "Realismo mágico",
+        "author": {
+          "name": "Gabriel García Márquez",
+          "birth_year": 1927,
+          "nationality": "Colombiana"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Laura Gómez",
+    "email": "laura.gomez@example.com",
+    "likes": [
+      {
+        "title": "La sombra del viento",
+        "year": 2001,
+        "genre": "Misterio",
+        "author": {
+          "name": "Carlos Ruiz Zafón",
+          "birth_year": 1964,
+          "nationality": "Española"
+        }
+      }
+    ]
+  }
+]
