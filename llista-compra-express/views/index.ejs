@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llista de la Compra</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🛒 Llista de la Compra</h1>
+        
+        <% if (missatge) { %>
+            <div class="missatge exit">
+                <%= missatge %>
+            </div>
+        <% } %>
+        
+        <% if (error) { %>
+            <div class="missatge error">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <form method="POST" action="/afegir" class="form-afegir">
+            <div class="input-group">
+                <input type="text" name="item" placeholder="Què necessites comprar?" required>
+                <button type="submit">Afegir</button>
+            </div>
+        </form>
+
+        <% if (llistaCompra.length === 0) { %>
+            <div class="llista-buida">
+                <p>La teva llista de la compra està buida.</p>
+                <p>💡 Afegeix alguns productes per començar!</p>
+            </div>
+        <% } else { %>
+            <div class="llista-container">
+                <h2>Els teus productes (<%= llistaCompra.length %>)</h2>
+                <ul class="llista">
+                    <% llistaCompra.forEach((item, index) => { %>
+                        <li class="item-llista">
+                            <span class="text-item"><%= item %></span>
+                            <form method="POST" action="/eliminar" class="form-eliminar">
+                                <input type="hidden" name="index" value="<%= index %>">
+                                <button type="submit" class="btn-eliminar">×</button>
+                            </form>
+                        </li>
+                    <% }); %>
+                </ul>
+                
+                <form method="POST" action="/netejar" class="form-netejar">
+                    <button type="submit" class="btn-netejar">
+                        🗑️ Netejar tota la llista
+                    </button>
+                </form>
+            </div>
+        <% } %>
+
+        <div class="api-info">
+            <h3>📡 API Endpoints</h3>
+            <p><strong>GET</strong> <code>/api/llista</code> - Obtenir llista en JSON</p>
+            <p><strong>POST</strong> <code>/api/llista</code> - Afegir element (JSON: {"item": "producte"})</p>
+            <p><strong>DELETE</strong> <code>/api/llista/:index</code> - Eliminar element per índex</p>
+        </div>
+    </div>
+</body>
+</html>

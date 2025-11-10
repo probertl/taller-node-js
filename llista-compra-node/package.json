@@ -16,6 +16,7 @@
  "license": "MIT",
  "dependencies": {
   "console-log-colors": "^0.5.0",
+  "ejs": "^3.1.10",
   "express": "^5.1.0"
  },
  "devDependencies": {

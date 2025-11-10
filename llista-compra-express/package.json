@@ -1,0 +1,22 @@
+{
+  "name": "llista-compra-express",
+  "version": "1.0.0",
+  "description": "Aplicació de llista de la compra amb Express.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^5.1.0",
+    "mongodb": "^7.0.0"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "llista",
+    "compra"
+  ],
+  "author": "Mercawoman",
+  "license": "MIT"
+}
